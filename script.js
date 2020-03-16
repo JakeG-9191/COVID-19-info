@@ -114,4 +114,11 @@ $(document).on('click', '.btn-primary', function(e) {
   searchLocalStats(country, title);
 });
 
+$(document).on('click', '.btn-danger', function(e) {
+  e.preventDefault();
+  $('.quasi-cookie').text('');
+  $('.quasi-cookie').css('z-index', 5);
+  $('.quasi-cookie').css('background', 'black');
+});
+
 searchStats();
