@@ -6,6 +6,12 @@ searchStats = () => {
   }).then(function(res) {
     console.log(res);
     console.log(res.results[0].total_cases);
+    console.log(
+      `Current Mortality Rate: ${(
+        (res.results[0].total_deaths / res.results[0].total_cases) *
+        100
+      ).toFixed(2)}%`
+    );
 
     let caseCreation = $('<span>');
     let caseInfo = $('<div>');

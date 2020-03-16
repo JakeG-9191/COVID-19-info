@@ -7,7 +7,7 @@ body {
 
 .jumbotron {
   border-radius: 18px;
-  margin-top: 1%;
+  margin-top: 2rem;
   z-index: 80;
 }
 
@@ -49,7 +49,7 @@ h6 {
 
 .btn-dark {
   margin-top: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-size: x-large;
   border-style: none;
 }
@@ -109,6 +109,7 @@ h6 {
   background: #e9ecef;
   border-radius: 10px;
   font-size: x-large;
+  margin-bottom: 5rem;
 }
 
 .widget div {
