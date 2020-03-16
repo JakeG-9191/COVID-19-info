@@ -4,6 +4,8 @@ Quick information about COVID-19, global and country-specific information
 
 # Live Site Link
 
+Visit the site at this link https://jakeg-9191.github.io/COVID-19-info/
+
 # Purpose
 
 This compact website acts as a quick reference to the latest statistics concerning the COVID-19 outbreak. The statistics are drawn realtime and users can choose between global statistics or get more detailed information on 16 countries that have been predefined.
