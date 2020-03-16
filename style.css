@@ -49,7 +49,6 @@ h6 {
 
 .btn-dark {
   margin-top: 1rem;
-  width: 90%;
   font-weight: 700;
   font-size: x-large;
   border-style: none;
@@ -104,4 +103,15 @@ h6 {
   z-index: 99;
   bottom: 0;
   font-size: larger;
+}
+
+.widget {
+  background: #e9ecef;
+  border-radius: 10px;
+  font-size: x-large;
+}
+
+div.widget {
+  border-color: black;
+  font-size: x-large;
 }
