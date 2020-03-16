@@ -1,0 +1,26 @@
+body {
+  text-align: center;
+  width: 90%;
+  margin-left: 5%;
+  background: black;
+}
+
+.jumbotron {
+  border-radius: 18px;
+  margin-top: 1%;
+}
+
+h3 {
+  padding: 1rem;
+}
+
+h2 {
+  background: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 18px;
+}
+
+h6 {
+  margin: 1%;
+}
