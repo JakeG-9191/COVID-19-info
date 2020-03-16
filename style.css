@@ -17,14 +17,14 @@ h3 {
 
 h2 {
   background: black;
-  color: white;
+  color: whitesmoke;
   padding: 1rem;
   border-radius: 18px;
 }
 
 .info {
   background: black;
-  color: white;
+  color: whitesmoke;
   padding: 1rem;
   border-radius: 18px;
 }
@@ -58,14 +58,14 @@ h6 {
 
 .btn-dark:hover {
   background-color: maroon;
-  color: white;
+  color: whitesmoke;
   border-style: none;
 }
 
 .global-facts {
   background-color: black;
   padding: 1rem;
-  color: white;
+  color: whitesmoke;
   border-radius: 18px;
 }
 
@@ -86,7 +86,7 @@ h1 {
 }
 
 hr {
-  background-color: white;
+  background-color: whitesmoke;
   width: 50%;
   margin-left: 25%;
 }
@@ -96,7 +96,7 @@ h6 {
 }
 
 .quasi-cookie {
-  background-color: white;
+  background-color: whitesmoke;
   color: black;
   padding: 1rem;
   position: fixed;
