@@ -21,6 +21,71 @@ h2 {
   border-radius: 18px;
 }
 
+.info {
+  background: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 18px;
+}
+
 h6 {
   margin: 1%;
+}
+
+.btn-primary {
+  margin-top: 1rem;
+  width: 40%;
+  margin-left: 5%;
+  font-size: x-large;
+  border-style: none;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: greenyellow;
+  color: black;
+  border-style: none;
+}
+
+.btn-dark {
+  margin-top: 1rem;
+  width: 90%;
+  font-weight: 700;
+  font-size: x-large;
+  border-style: none;
+}
+
+.btn-dark:hover {
+  background-color: maroon;
+  color: white;
+  border-style: none;
+}
+
+.global-facts {
+  background-color: black;
+  padding: 1rem;
+  color: white;
+  border-radius: 18px;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+.caseToday {
+  color: yellow;
+}
+
+.caseDone {
+  color: greenyellow;
+}
+
+.caseOpen {
+  color: orange;
+}
+
+hr {
+  background-color: white;
+  width: 50%;
+  margin-left: 25%;
 }

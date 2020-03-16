@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COVID-19 Quick Facts</title>
+    <title>COVID-19 Quick Statistics</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -13,10 +13,95 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="jumbotron">
-      <h1>COVID-19 Quick Facts</h1>
-      <button class="btn btn-dark btn-lg">Refresh Page</button>
-      <div class="global-facts"></div>
+    <div class="container">
+      <div class="row">
+        <div class="jumbotron">
+          <h1>COVID-19 Quick Statistics</h1>
+          <h3 class="info">
+            These data come from a single source that aggregate global data,
+            please make sure to conduct further research and always compare
+            figures with other, reputable sources.
+          </h3>
+          <h4 class="info">
+            Click on a Country to learn more, or click the Global Statistics
+            button for a refresh of all current information globally.
+          </h4>
+          <div class="global-facts"></div>
+          <button class="btn btn-dark btn-lg">
+            Refresh Page - Global Statistics
+          </button>
+          <div class="country-facts col-xs-12">
+            <button
+              class="btn btn-primary"
+              data-name="US"
+              data-title="United States"
+            >
+              Country Information - United States
+            </button>
+            <button
+              class="btn btn-primary"
+              data-name="AT"
+              data-title="Australia"
+            >
+              Country Information - Australia
+            </button>
+            <button class="btn btn-primary" data-name="CN" data-title="China">
+              Country Information - China
+            </button>
+            <button class="btn btn-primary" data-name="EG" data-title="Egypt">
+              Country Information - Egypt
+            </button>
+            <button class="btn btn-primary" data-name="FI" data-title="Finland">
+              Country Information - Finland
+            </button>
+            <button class="btn btn-primary" data-name="FR" data-title="France">
+              Country Information - France
+            </button>
+            <button class="btn btn-primary" data-name="IR" data-title="Iran">
+              Country Information - Iran
+            </button>
+            <button class="btn btn-primary" data-name="MX" data-title="Mexico">
+              Country Information - Mexico
+            </button>
+            <button class="btn btn-primary" data-name="NO" data-title="Norway">
+              Country Information - Norway
+            </button>
+            <button class="btn btn-primary" data-name="PE" data-title="Peru">
+              Country Information - Peru
+            </button>
+            <button class="btn btn-primary" data-name="RU" data-title="Russia">
+              Country Information - Russia
+            </button>
+            <button class="btn btn-primary" data-name="ES" data-title="Spain">
+              Country Information - Spain
+            </button>
+            <button
+              class="btn btn-primary"
+              data-name="KR"
+              data-title="South Korea"
+            >
+              Country Information - South Korea
+            </button>
+            <button class="btn btn-primary" data-name="SE" data-title="Sweden">
+              Country Information - Sweden
+            </button>
+            <button
+              class="btn btn-primary"
+              data-name="GB"
+              data-title="United Kingdom"
+            >
+              Country Information - United Kingdom
+            </button>
+            <button
+              class="btn btn-primary"
+              data-name="ZW"
+              data-title="Zimbabwe"
+            >
+              Country Information - Zimbabwe
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./script.js"></script>
