@@ -1,6 +1,5 @@
 searchStats = () => {
-  let queryURL =
-    'https://cors-anywhere/https://thevirustracker.com/free-api?global=stats';
+  let queryURL = 'https://thevirustracker.com/free-api?global=stats';
   $.ajax({
     url: queryURL,
     method: 'GET'
