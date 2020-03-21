@@ -1,3 +1,8 @@
+refreshStats = () => {
+  timer = 60;
+  setTimeout(searchStats, 1000 * timer);
+};
+
 searchStats = () => {
   let queryURL = 'https://thevirustracker.com/free-api?global=stats';
   $.ajax({
@@ -50,6 +55,7 @@ searchStats = () => {
           res.results[0].total_new_deaths_today
         )}</h3>`
       );
+      $('.global-facts').text('');
 
       caseCreation.append(caseInfo);
       $('.global-facts').append(caseCreation);
@@ -66,6 +72,7 @@ searchStats = () => {
       caseCreation.append(caseInfo);
       $('.global-facts').append(caseCreation);
     });
+  refreshStats();
 };
 
 searchLocalStats = (country, title) => {
@@ -114,6 +121,7 @@ searchLocalStats = (country, title) => {
           res.countrydata[0].total_new_deaths_today
         )}</h3>`
       );
+      $('.global-facts').text('');
 
       caseCreation.append(caseInfo);
       $('.global-facts').append(caseCreation);
@@ -134,13 +142,11 @@ searchLocalStats = (country, title) => {
 
 $(document).on('click', '.btn-dark', function(e) {
   e.preventDefault();
-  $('.global-facts').text('');
   searchStats();
 });
 
 $(document).on('click', '.btn-primary', function(e) {
   e.preventDefault();
-  $('.global-facts').text('');
   country = $(this).attr('data-name');
   title = $(this).attr('data-title');
   searchLocalStats(country, title);
