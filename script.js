@@ -1,6 +1,35 @@
 var myTimer;
+var time = 180;
+var intervalId = setInterval(count, 1000);
+
+function timeConverter(t) {
+  var minutes = Math.floor(t / 60);
+  var seconds = t - minutes * 60;
+
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+
+  if (minutes === 0) {
+    minutes = '00';
+  } else if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+
+  return minutes + ':' + seconds;
+}
+
+function count() {
+  if (time === 0) {
+    time = 180;
+  }
+  time--;
+  var currentTime = timeConverter(time);
+  $('.clock').text(`Auto Refresh: ${currentTime}`);
+}
 
 refreshStats = () => {
+  clearInterval(intervalId);
   let today = new Date();
   let options = {
     weekday: 'long',
@@ -10,13 +39,15 @@ refreshStats = () => {
     hour: 'numeric',
     minute: 'numeric'
   };
-  console.log(`live reload on ${today.toLocaleDateString('en-us', options)}`);
-  timer = 60;
-  myTimer = setTimeout(searchStats, 1000 * timer);
+  console.log(`Live reload on ${today.toLocaleDateString('en-us', options)}`);
+  myTimer = setTimeout(searchStats, 1000 * time);
+  intervalId = setInterval(count, 1000);
 };
 
 searchStats = () => {
+  clearInterval(intervalId);
   clearTimeout(myTimer);
+  time = 180;
   let queryURL = 'https://thevirustracker.com/free-api?global=stats';
   $.ajax({
     url: queryURL,
@@ -29,7 +60,9 @@ searchStats = () => {
         `Current Mortality Rate: ${(
           (res.results[0].total_deaths / res.results[0].total_cases) *
           100
-        ).toFixed(2)}% - Based on Known Cases, likely much lower!`
+        ).toFixed(
+          2
+        )}% - Based on Known Cases, Actual Mortality Rate Likely Much Lower!`
       );
 
       let caseCreation = $('<span>');
@@ -90,6 +123,8 @@ searchStats = () => {
 
 searchLocalStats = (country, title) => {
   clearTimeout(myTimer);
+  clearInterval(intervalId);
+  $('.clock').text('Auto Refresh Paused');
   let queryURL = `https://thevirustracker.com/free-api?countryTotal=${country}`;
   $.ajax({
     url: queryURL,
