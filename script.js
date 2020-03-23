@@ -31,7 +31,7 @@ function count() {
 searchNYTimes = () => {
   $('.nytimes').text('');
   let queryURL =
-    'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=covid-19&api-key=GaDZeanPVCWoyZEde1NnRsJ2WzAvlfzQ';
+    'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=coronavirus&api-key=GaDZeanPVCWoyZEde1NnRsJ2WzAvlfzQ';
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -46,11 +46,15 @@ searchNYTimes = () => {
       console.log(articleResults.response.docs[0].headline.main);
 
       for (let i = 0; i < articleCount; i++) {
+        let datePublished = articleResults.response.docs[i].pub_date.substr(
+          0,
+          10
+        );
         articleInfo.append(
           `<div class='articles'>
-          <h3><a target='_blank' href='${articleResults.response.docs[i].web_url}'>${articleResults.response.docs[i].headline.print_headline}</a></h3>
+          <h3><a target='_blank' href='${articleResults.response.docs[i].web_url}'>${articleResults.response.docs[i].headline.main}</a></h3>
           <hr />
-          <h4>${articleResults.response.docs[i].headline.main}</h4>
+          <h4>${datePublished}</h4>
           <hr />
           <h5>${articleResults.response.docs[i].lead_paragraph}</h5>
           <p><a target='_blank' href='https://www.nytimes.com/'>Source: New York Times</a><p>
