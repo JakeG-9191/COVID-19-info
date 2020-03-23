@@ -36,7 +36,7 @@ searchNYTimes = newsCountry => {
     method: 'GET'
   })
     .then(function(res) {
-      let articleCount = 5;
+      let articleCount = 3;
       let articleResults = res;
       let articleCreation = $('<span>');
       let articleInfo = $('<div>');
