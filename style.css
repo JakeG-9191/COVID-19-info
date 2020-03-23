@@ -27,6 +27,7 @@ h2 {
   color: whitesmoke;
   padding: 1rem;
   border-radius: 18px;
+  margin-top: 1rem;
 }
 
 h6 {
@@ -75,6 +76,9 @@ h6 {
   margin-bottom: 1rem;
   margin-top: 1rem;
   font-size: x-large;
+  width: 50%;
+  margin-left: 25%;
+  font-weight: 600;
 }
 
 h1 {
@@ -131,4 +135,11 @@ h6 {
 .thevirustracker-widget div {
   min-width: 20px;
   border-color: black;
+}
+
+@media (max-width: 450px) {
+  .clock {
+    width: 100%;
+    margin-left: 0;
+  }
 }
