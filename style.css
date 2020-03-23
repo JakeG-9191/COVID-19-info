@@ -30,6 +30,26 @@ h2 {
   margin-top: 1rem;
 }
 
+.nytimes {
+  background: #e9ecef;
+  color: black;
+  padding: 1rem;
+  border-radius: 18px;
+  margin-bottom: 1rem;
+}
+
+.articles {
+  background: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 18px;
+  margin: 1rem 0;
+}
+
+.articles a {
+  color: orange;
+}
+
 h6 {
   margin: 1%;
 }

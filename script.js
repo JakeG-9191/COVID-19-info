@@ -28,8 +28,56 @@ function count() {
   $('.clock').text(`Auto Refresh: ${currentTime}`);
 }
 
+searchNYTimes = () => {
+  $('.nytimes').text('');
+  let queryURL =
+    'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=covid-19&api-key=GaDZeanPVCWoyZEde1NnRsJ2WzAvlfzQ';
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  })
+    .then(function(res) {
+      let articleCount = 5;
+      let articleResults = res;
+      let articleCreation = $('<span>');
+      let articleInfo = $('<div>');
+
+      console.log(articleResults);
+      console.log(articleResults.response.docs[0].headline.main);
+
+      for (let i = 0; i < articleCount; i++) {
+        articleInfo.append(
+          `<div class='articles'>
+          <h3><a target='_blank' href='${articleResults.response.docs[i].web_url}'>${articleResults.response.docs[i].headline.print_headline}</a></h3>
+          <hr />
+          <h4>${articleResults.response.docs[i].headline.main}</h4>
+          <hr />
+          <h5>${articleResults.response.docs[i].lead_paragraph}</h5>
+          <p><a target='_blank' href='https://www.nytimes.com/'>Source: New York Times</a><p>
+          </div>`
+        );
+      }
+
+      articleCreation.append(articleInfo);
+      $('.nytimes').append(articleCreation);
+    })
+    .catch(function(err) {
+      console.log(`There has been an error with getting NYTimes Articles`);
+      let articleCreation = $('<span>');
+      let articleInfo = $('<div>');
+
+      articleInfo.append(
+        `<h3>There has been an issue gathering articles from the New York Times, please check back later.</h3>`
+      );
+
+      articleCreation.append(articleInfo);
+      $('.nytimes').append(articleCreation);
+    });
+};
+
 refreshStats = () => {
   clearInterval(intervalId);
+  searchNYTimes();
   let today = new Date();
   let options = {
     weekday: 'long',
