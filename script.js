@@ -1,9 +1,12 @@
+var myTimer;
+
 refreshStats = () => {
   timer = 60;
-  setTimeout(searchStats, 1000 * timer);
+  myTimer = setTimeout(searchStats, 1000 * timer);
 };
 
 searchStats = () => {
+  clearTimeout(myTimer);
   let queryURL = 'https://thevirustracker.com/free-api?global=stats';
   $.ajax({
     url: queryURL,
