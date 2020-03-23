@@ -9,6 +9,7 @@ body {
   border-radius: 18px;
   margin-top: 2rem;
   z-index: 80;
+  margin-bottom: 1rem;
 }
 
 h3 {
@@ -43,7 +44,7 @@ h2 {
   color: white;
   padding: 1rem;
   border-radius: 18px;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .articles a {

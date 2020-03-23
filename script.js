@@ -25,13 +25,12 @@ function count() {
   }
   time--;
   var currentTime = timeConverter(time);
-  $('.clock').text(`Auto Refresh: ${currentTime}`);
+  $('.clock').text(`Statistics Auto Updated In: ${currentTime}`);
 }
 
-searchNYTimes = () => {
+searchNYTimes = newsCountry => {
   $('.nytimes').text('');
-  let queryURL =
-    'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=coronavirus&api-key=GaDZeanPVCWoyZEde1NnRsJ2WzAvlfzQ';
+  let queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=coronavirus&fq=glocations:(${newsCountry})&api-key=GaDZeanPVCWoyZEde1NnRsJ2WzAvlfzQ`;
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -43,7 +42,6 @@ searchNYTimes = () => {
       let articleInfo = $('<div>');
 
       console.log(articleResults);
-      console.log(articleResults.response.docs[0].headline.main);
 
       for (let i = 0; i < articleCount; i++) {
         let datePublished = articleResults.response.docs[i].pub_date.substr(
@@ -71,7 +69,9 @@ searchNYTimes = () => {
       let articleInfo = $('<div>');
 
       articleInfo.append(
-        `<h3>There has been an issue gathering articles from the New York Times, please check back later.</h3>`
+        `<h3>There has been an issue gathering articles from the New York Times for ${
+          newsCountry ? newsCountry : ''
+        }, please check back later.</h3>`
       );
 
       articleCreation.append(articleInfo);
@@ -81,7 +81,7 @@ searchNYTimes = () => {
 
 refreshStats = () => {
   clearInterval(intervalId);
-  searchNYTimes();
+  searchNYTimes('United States');
   let today = new Date();
   let options = {
     weekday: 'long',
@@ -107,7 +107,6 @@ searchStats = () => {
   })
     .then(function(res) {
       console.log(res);
-      console.log(res.results[0].total_cases);
       console.log(
         `Current Mortality Rate: ${(
           (res.results[0].total_deaths / res.results[0].total_cases) *
@@ -184,7 +183,6 @@ searchLocalStats = (country, title) => {
   })
     .then(function(res) {
       console.log(res);
-      console.log(res.countrydata[0].total_cases);
 
       let caseCreation = $('<span>');
       let caseInfo = $('<div>');
@@ -251,6 +249,10 @@ $(document).on('click', '.btn-primary', function(e) {
   country = $(this).attr('data-name');
   title = $(this).attr('data-title');
   searchLocalStats(country, title);
+  newsCountry = [];
+  newsCountry.unshift(title);
+  console.log(newsCountry);
+  searchNYTimes(newsCountry);
 });
 
 $(document).on('click', '.btn-danger', function(e) {
