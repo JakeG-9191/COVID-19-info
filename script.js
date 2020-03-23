@@ -1,6 +1,16 @@
 var myTimer;
 
 refreshStats = () => {
+  let today = new Date();
+  let options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric'
+  };
+  console.log(`live reload on ${today.toLocaleDateString('en-us', options)}`);
   timer = 60;
   myTimer = setTimeout(searchStats, 1000 * timer);
 };
@@ -79,6 +89,7 @@ searchStats = () => {
 };
 
 searchLocalStats = (country, title) => {
+  clearTimeout(myTimer);
   let queryURL = `https://thevirustracker.com/free-api?countryTotal=${country}`;
   $.ajax({
     url: queryURL,
