@@ -30,18 +30,24 @@ function count() {
 
 searchNYTimes = newsCountry => {
   $('.nytimes').text('');
-  let queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=coronavirus&fq=glocations:(${newsCountry})&api-key=GaDZeanPVCWoyZEde1NnRsJ2WzAvlfzQ`;
+  let queryURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=coronavirus&fq=glocations:${newsCountry}&hits=3&api-key=GaDZeanPVCWoyZEde1NnRsJ2WzAvlfzQ`;
   $.ajax({
     url: queryURL,
     method: 'GET'
   })
     .then(function(res) {
-      let articleCount = 3;
+      let articleCount;
       let articleResults = res;
       let articleCreation = $('<span>');
       let articleInfo = $('<div>');
 
       console.log(articleResults);
+
+      if (articleResults.response.docs.length > 3) {
+        articleCount = 3;
+      } else if (articleResults.response.docs.length < 3) {
+        articleCount = articleResults.response.docs.length;
+      }
 
       for (let i = 0; i < articleCount; i++) {
         let datePublished = articleResults.response.docs[i].pub_date.substr(
