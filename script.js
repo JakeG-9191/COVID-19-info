@@ -139,7 +139,8 @@ searchStats = () => {
         `<h6><a target='_blank' href='${
           res.results[0].source.url
         }'>Source: The Virus Tracker</a></h6>
-        <h2>Today's Date: ${today.toLocaleDateString('en-us', options)}</h2>
+        <h2 class='title-stats'>Current Global Statistics</h2>
+        <h3>${today.toLocaleDateString('en-us', options)}</h3>
         <hr />
         <h3 class='caseToday'>Current Global Cases: ${new Intl.NumberFormat().format(
           res.results[0].total_cases
@@ -207,22 +208,23 @@ searchLocalStats = (country, title) => {
         `<h6><a target='_blank' href='${
           res.countrydata[0].info.source
         }'>Source: The Virus Tracker</a></h6>
-        <h2>Today's Date: ${today.toLocaleDateString('en-us', options)}</h2>
+        <h2 class='title-stats'>Current Statistics for <em>${title}</em></h2>
+        <h3>${today.toLocaleDateString('en-us', options)}</h3>
         <hr />
-        <h3 class='caseToday'>Current ${title} Cases: ${new Intl.NumberFormat().format(
+        <h3 class='caseToday'>Current Cases: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_cases
         )}</h3>
-        <h3 class='caseDone'>Current ${title} Recoveries: ${new Intl.NumberFormat().format(
+        <h3 class='caseDone'>Current Recoveries: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_recovered
         )}</h3>
-        <h3 class='caseOpen'>Current ${title} Deaths: ${new Intl.NumberFormat().format(
+        <h3 class='caseOpen'>Current Deaths: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_deaths
         )}</h3>
         <hr />
-        <h3 class='caseToday'>Total New Cases Today (${title}): ${new Intl.NumberFormat().format(
+        <h3 class='caseToday'>Total New Cases Today: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_new_cases_today
         )}</h3>
-        <h3 class='caseOpen'>Total New Deaths Today (${title}): ${new Intl.NumberFormat().format(
+        <h3 class='caseOpen'>Total New Deaths Today: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_new_deaths_today
         )}</h3>`
       );

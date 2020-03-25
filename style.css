@@ -158,6 +158,17 @@ h6 {
   border-color: black;
 }
 
+.title-stats {
+  color: whitesmoke;
+  width: 70%;
+  margin-left: 15%;
+}
+
+.title-stats em {
+  color: greenyellow;
+  text-decoration: underline;
+}
+
 @media (max-width: 450px) {
   .clock {
     width: 100%;
