@@ -226,7 +226,7 @@ searchLocalStats = (country, title) => {
         )}</h3>
         <h6><a target='_blank' href='${
           res.countrydata[0].info.source
-        }'>Source: The Virus Tracker</a></h6>`
+        }'>Powered By The Virus Tracker</a></h6>`
       );
       $('.global-facts').text('');
 
