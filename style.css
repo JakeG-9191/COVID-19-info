@@ -1,8 +1,12 @@
+/* font-family: 'Bebas Neue', cursive;
+font-family: 'Poppins', sans-serif; */
+
 body {
   text-align: center;
   width: 90%;
   margin-left: 5%;
   background: black;
+  font-family: 'Poppins', sans-serif;
 }
 
 .jumbotron {
@@ -23,6 +27,10 @@ h2 {
   color: whitesmoke;
   padding: 1rem;
   border-radius: 18px;
+}
+
+h1 {
+  font-family: 'Bebas Neue', cursive;
 }
 
 .info {
