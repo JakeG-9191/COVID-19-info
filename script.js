@@ -136,10 +136,7 @@ searchStats = () => {
       let today = new Date();
 
       caseInfo.append(
-        `<h6><a target='_blank' href='${
-          res.results[0].source.url
-        }'>Source: The Virus Tracker</a></h6>
-        <h2 class='title-stats'>Current Global Statistics</h2>
+        `<h2 class='title-stats'>Current Global Statistics</h2>
         <h3>${today.toLocaleDateString('en-us', options)}</h3>
         <hr />
         <h3 class='caseToday'>Current Global Cases: ${new Intl.NumberFormat().format(
@@ -157,7 +154,10 @@ searchStats = () => {
         )}</h3>
         <h3 class='caseOpen'>Total New Global Deaths Today: ${new Intl.NumberFormat().format(
           res.results[0].total_new_deaths_today
-        )}</h3>`
+        )}</h3>
+        <h6><a target='_blank' href='${
+          res.results[0].source.url
+        }'>Powered By The Virus Tracker</a></h6>`
       );
       $('.global-facts').text('');
 
@@ -205,10 +205,7 @@ searchLocalStats = (country, title) => {
       let today = new Date();
 
       caseInfo.append(
-        `<h6><a target='_blank' href='${
-          res.countrydata[0].info.source
-        }'>Source: The Virus Tracker</a></h6>
-        <h2 class='title-stats'>Current Statistics for <em>${title}</em></h2>
+        `<h2 class='title-stats'>Current Statistics for <em>${title}</em></h2>
         <h3>${today.toLocaleDateString('en-us', options)}</h3>
         <hr />
         <h3 class='caseToday'>Current Cases: ${new Intl.NumberFormat().format(
@@ -226,7 +223,10 @@ searchLocalStats = (country, title) => {
         )}</h3>
         <h3 class='caseOpen'>Total New Deaths Today: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_new_deaths_today
-        )}</h3>`
+        )}</h3>
+        <h6><a target='_blank' href='${
+          res.countrydata[0].info.source
+        }'>Source: The Virus Tracker</a></h6>`
       );
       $('.global-facts').text('');
 
