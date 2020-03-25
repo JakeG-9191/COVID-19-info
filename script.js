@@ -251,7 +251,6 @@ $(document).on('click', '.btn-dark', function(e) {
 });
 
 $(document).on('click', '.btn-primary', function(e) {
-  e.preventDefault();
   country = $(this).attr('data-name');
   title = $(this).attr('data-title');
   searchLocalStats(country, title);
