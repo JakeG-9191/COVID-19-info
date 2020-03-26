@@ -267,6 +267,33 @@ $(document).on('click', '.btn-danger', function(e) {
   $('.quasi-cookie').text('');
   $('.quasi-cookie').css('z-index', 5);
   $('.quasi-cookie').css('background', 'black');
+  cookieInfo();
 });
+
+cookieInfo = () => {
+  localStorage.setItem('confirmed', true);
+};
+
+isCookieConsented = () => {
+  let checked = localStorage.getItem('confirmed');
+  console.log(`has consented for cookie: ${checked}`);
+
+  if (checked) {
+    $('.quasi-cookie').text('');
+    $('.quasi-cookie').css('z-index', 5);
+    $('.quasi-cookie').css('background', 'black');
+  } else {
+    $('.quasi-cookie').append(
+      `<h6>
+    We use cookies and web analytics to help improve site performance and
+    your experience, by continuing to use this website you consent to this
+    policy.
+    </h6>
+    <button class="btn btn-danger">Accept</button>`
+    );
+  }
+};
+
+isCookieConsented();
 
 searchStats();
