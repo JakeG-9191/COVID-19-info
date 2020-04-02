@@ -1,6 +1,9 @@
 var myTimer;
 var time = 180;
 var intervalId = setInterval(count, 1000);
+var globalCasesCalc;
+var globalDeathsCalc;
+var todayCasesCalc;
 
 function timeConverter(t) {
   var minutes = Math.floor(t / 60);
@@ -123,6 +126,10 @@ searchStats = () => {
         )}% - Based on Known Cases, Actual Mortality Rate Likely Much Lower!`
       );
 
+      globalCasesCalc = res.results[0].total_cases;
+      globalDeathsCalc = res.results[0].total_deaths;
+      todayCasesCalc = res.results[0].total_new_cases_today;
+
       let caseCreation = $('<span>');
       let caseInfo = $('<div>');
 
@@ -212,16 +219,19 @@ searchLocalStats = (country, title) => {
         <h3 class='caseToday'>Current Cases: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_cases
         )}</h3>
+         <h4 class='compGlobal' id='typeWriter'>Calculating...</h4>
         <h3 class='caseDone'>Current Recoveries: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_recovered
         )}</h3>
         <h3 class='caseOpen'>Current Deaths: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_deaths
         )}</h3>
+        <h4 class='compGlobal' id='typeWriterDeaths'>Calculating...</h4>
         <hr />
         <h3 class='caseToday'>Total New Cases Today: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_new_cases_today
         )}</h3>
+        <h4 class='caseOpen' id='newDeathPercent'></h4>
         <h3 class='caseOpen'>Total New Deaths Today: ${new Intl.NumberFormat().format(
           res.countrydata[0].total_new_deaths_today
         )}</h3>
@@ -229,8 +239,49 @@ searchLocalStats = (country, title) => {
           res.countrydata[0].info.source
         }'>Powered By The Virus Tracker</a></h6>`
       );
-      $('.global-facts').text('');
 
+      function clearStandBy() {
+        $('#typeWriter').text('');
+        $('#typeWriterDeaths').text('');
+      }
+
+      setTimeout(clearStandBy, 1000);
+
+      let j = 0;
+      let text = `${new Intl.NumberFormat().format(
+        ((res.countrydata[0].total_cases / globalCasesCalc) * 100).toFixed(2)
+      )}% of Global Cases`;
+      let speed = 150;
+
+      function typeWriter() {
+        if (j < text.length) {
+          document.getElementById('typeWriter').innerHTML += text.charAt(j);
+          j++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      setTimeout(typeWriter, 1000);
+
+      let k = 0;
+      let textDeaths = `${new Intl.NumberFormat().format(
+        ((res.countrydata[0].total_deaths / globalDeathsCalc) * 100).toFixed(2)
+      )}% of Global Deaths`;
+      let speedDeath = 150;
+
+      function typeWriterDeaths() {
+        if (k < textDeaths.length) {
+          document.getElementById(
+            'typeWriterDeaths'
+          ).innerHTML += textDeaths.charAt(k);
+          k++;
+          setTimeout(typeWriterDeaths, speedDeath);
+        }
+      }
+
+      setTimeout(typeWriterDeaths, 1000);
+
+      $('.global-facts').text('');
       caseCreation.append(caseInfo);
       $('.global-facts').append(caseCreation);
     })
@@ -250,7 +301,6 @@ searchLocalStats = (country, title) => {
 
 $(document).on('click', '.btn-dark', function(e) {
   $('.global-facts').text('');
-  e.preventDefault();
   searchStats();
 });
 
@@ -272,6 +322,11 @@ $(document).on('click', '.btn-danger', function(e) {
   $('.quasi-cookie').css('background', 'black');
   cookieInfo();
 });
+
+window.onload = () => {
+  searchStats();
+  isCookieConsented();
+};
 
 cookieInfo = () => {
   localStorage.setItem('confirmed', true);
@@ -296,7 +351,3 @@ isCookieConsented = () => {
     );
   }
 };
-
-isCookieConsented();
-
-searchStats();

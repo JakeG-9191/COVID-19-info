@@ -18,6 +18,10 @@ body {
   background-size: cover;
 }
 
+.compGlobal {
+  font-style: italic;
+}
+
 h3 {
   padding: 1rem;
 }
