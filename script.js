@@ -86,6 +86,7 @@ searchNYTimes = newsCountry => {
 };
 
 refreshStats = () => {
+  $('.global-facts').text('');
   clearInterval(intervalId);
   searchNYTimes('United States');
   let today = new Date();
@@ -106,7 +107,7 @@ searchStats = () => {
   clearInterval(intervalId);
   clearTimeout(myTimer);
   time = 180;
-  let queryURL = 'https://thevirustracker.com/free-api?global=stats';
+  let queryURL = 'https://api.thevirustracker.com/free-api?global=stats';
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -183,7 +184,7 @@ searchLocalStats = (country, title) => {
   clearTimeout(myTimer);
   clearInterval(intervalId);
   $('.clock').text('Auto Refresh Paused');
-  let queryURL = `https://thevirustracker.com/free-api?countryTotal=${country}`;
+  let queryURL = `https://api.thevirustracker.com/free-api?countryTotal=${country}`;
   $.ajax({
     url: queryURL,
     method: 'GET'
