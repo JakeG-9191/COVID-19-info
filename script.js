@@ -251,7 +251,7 @@ searchLocalStats = (country, title) => {
       let text = `${new Intl.NumberFormat().format(
         ((res.countrydata[0].total_cases / globalCasesCalc) * 100).toFixed(2)
       )}% of Global Cases`;
-      let speed = 150;
+      let speed = 125;
 
       function typeWriter() {
         if (j < text.length) {
@@ -267,7 +267,7 @@ searchLocalStats = (country, title) => {
       let textDeaths = `${new Intl.NumberFormat().format(
         ((res.countrydata[0].total_deaths / globalDeathsCalc) * 100).toFixed(2)
       )}% of Global Deaths`;
-      let speedDeath = 150;
+      let speedDeath = 125;
 
       function typeWriterDeaths() {
         if (k < textDeaths.length) {
