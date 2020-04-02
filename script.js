@@ -248,11 +248,13 @@ searchLocalStats = (country, title) => {
 };
 
 $(document).on('click', '.btn-dark', function(e) {
+  $('.global-facts').text('');
   e.preventDefault();
   searchStats();
 });
 
 $(document).on('click', '.btn-primary', function(e) {
+  $('.global-facts').text('');
   country = $(this).attr('data-name');
   title = $(this).attr('data-title');
   searchLocalStats(country, title);
