@@ -31,6 +31,7 @@ h2 {
 
 h1 {
   font-family: 'Bebas Neue', cursive;
+  margin-bottom: 2rem;
 }
 
 .info {
@@ -111,10 +112,6 @@ h6 {
   width: 50%;
   margin-left: 25%;
   font-weight: 600;
-}
-
-h1 {
-  margin-bottom: 2rem;
 }
 
 .caseToday {
